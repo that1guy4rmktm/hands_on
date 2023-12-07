@@ -36,3 +36,19 @@ git config --global user.email "<your email>"
 
 sudo apt-install net-tools
 #for netstat commands
+#installing kubernetes tools
+sudo apt-get update && sudo apt-get install -y apt-transport-https curl
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+sudo su -c 'echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list'
+sudo apt-get update
+sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-mark hold kubelet kubeadm kubectl
+## initializing 
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<IP_ADDRESS>
+##configuring a kubectl
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+##
+kubectl get nodes
+kubectl get pods --all-namespaces
