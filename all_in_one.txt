@@ -1,0 +1,38 @@
+# this is the one size fits all for ubuntu
+
+sudo apt update && sudo apt upgrade -y
+
+# upgrades & updates at once
+
+sudo apt install snapd
+# makes it easier to install other files
+
+sudo snap install hello-world
+
+hello-world
+#checks if snapd is installed correct or not if it is, prints hello world
+
+
+sudo snap install --classic code
+#installs vscode
+
+code
+# if you type just code, terminal opens vscode
+#for deleting/removing vscode, sudo snap remove code
+
+sudo snap install --classic docker && sudo install --classic kubectl
+
+#for git
+sudo apt-get update && sudo apt-get install git
+
+#installs in one go
+
+git --version
+
+#verify it was correctly installed
+
+git config --global user.name "<your name>"
+git config --global user.email "<your email>"
+
+sudo apt-install net-tools
+#for netstat commands
